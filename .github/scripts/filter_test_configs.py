@@ -96,7 +96,7 @@ def parse_args() -> Any:
     parser.add_argument(
         "--job-name",
         type=str,
-        help="the name of the current job, i.e. linux-focal-py3.8-gcc7 / build",
+        help="the name of the current job, i.e. linux-focal-py3.9-gcc7 / build",
     )
     parser.add_argument("--pr-number", type=str, help="the pull request number")
     parser.add_argument("--tag", type=str, help="the associated tag if it exists")
@@ -306,12 +306,12 @@ def process_jobs(
             PLATFORM,
             JOB (CONFIG),
         ],
-        "pull / linux-bionic-py3.8-clang9 / test (dynamo)": [
+        "pull / linux-bionic-py3.9-clang9 / test (dynamo)": [
             "pytorchbot",
             "94861",
             "https://github.com/pytorch/pytorch/issues/94861",
             "pull",
-            "linux-bionic-py3.8-clang9",
+            "linux-bionic-py3.9-clang9",
             "test (dynamo)",
         ],
     }
@@ -357,17 +357,17 @@ def process_jobs(
         # The logic after this is fairly complicated:
         #
         # - If the target record doesn't have the optional job (config) name,
-        #   i.e. pull / linux-bionic-py3.8-clang9, all build and test jobs will
+        #   i.e. pull / linux-bionic-py3.9-clang9, all build and test jobs will
         #   be skipped if it's a disabled record or marked as unstable if it's
         #   an unstable record
         #
         # - If the target record has the job name and it's a build job, i.e.
-        #   pull / linux-bionic-py3.8-clang9 / build, all build and test jobs
+        #   pull / linux-bionic-py3.9-clang9 / build, all build and test jobs
         #   will be skipped if it's a disabled record or marked as unstable if
         #   it's an unstable record, because the latter requires the former
         #
         # - If the target record has the job name and it's a test job without
-        #   the config part, i.e. pull / linux-bionic-py3.8-clang9 / test, all
+        #   the config part, i.e. pull / linux-bionic-py3.9-clang9 / test, all
         #   test jobs will be skipped if it's a disabled record or marked as
         #   unstable if it's an unstable record
         #

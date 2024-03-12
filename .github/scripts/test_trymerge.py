@@ -563,8 +563,8 @@ class TestTryMerge(TestCase):
                 "expected": "android-emulator-build-test / build-and-test (default)",
             },
             {
-                "name": "linux-focal-rocm5.4.2-py3.8 / build",
-                "expected": "linux-focal-rocm5.4.2-py3.8 / build",
+                "name": "linux-focal-rocm5.4.2-py3.9 / build",
+                "expected": "linux-focal-rocm5.4.2-py3.9 / build",
             },
             {
                 "name": "libtorch-cpu-shared-with-deps-release-build",
@@ -632,7 +632,7 @@ class TestBypassFailures(TestCase):
         )
         self.assertTrue(
             checks[
-                "pull / linux-jammy-py3.8-gcc11 / test (distributed, 1, 2, linux.2xlarge)"
+                "pull / linux-jammy-py3.9-gcc11 / test (distributed, 1, 2, linux.2xlarge)"
             ].classification
             == "FLAKY"
         )
