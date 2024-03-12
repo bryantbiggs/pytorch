@@ -200,10 +200,10 @@ jobs:
         with:
           submodules: false
           fetch-depth: 1
-      - name: Setup Python 3.8
+      - name: Setup Python 3.9
         uses: actions/setup-python@v4
         with:
-          python-version: '3.8'
+          python-version: '3.9'
           architecture: x64
           cache: pip
       - name: Install dependencies
@@ -240,11 +240,11 @@ jobs:
           cache: pip
           cache-dependency-path: |
             **/requirements.txt
-      - name: Setup Python 3.8
+      - name: Setup Python 3.9
         if: matrix.test_type != 'older_python_version'
         uses: actions/setup-python@v4
         with:
-          python-version: '3.8'
+          python-version: '3.9'
           architecture: x64
           check-latest: false
           cache: pip

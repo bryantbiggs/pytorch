@@ -16,6 +16,9 @@ env:
   ANACONDA_USER: pytorch
   AWS_DEFAULT_REGION: us-east-1
   BUILD_ENVIRONMENT: windows-binary-libtorch-debug
+  # This is a dummy value for libtorch to work correctly with our batch scripts
+  # without this value pip does not get installed for some reason
+  DESIRED_PYTHON: '3.9'
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   PR_NUMBER: ${{ github.event.pull_request.number }}
   SHA1: ${{ github.event.pull_request.head.sha || github.sha }}
@@ -40,9 +43,6 @@ jobs:
       SKIP_ALL_TESTS: 1
       LIBTORCH_CONFIG: debug
       LIBTORCH_VARIANT: shared-with-deps
-      # This is a dummy value for libtorch to work correctly with our batch scripts
-      # without this value pip does not get installed for some reason
-      DESIRED_PYTHON: "3.8"
     steps:
       - name: Display EC2 information
         shell: bash
@@ -156,9 +156,6 @@ jobs:
       SKIP_ALL_TESTS: 1
       LIBTORCH_CONFIG: debug
       LIBTORCH_VARIANT: shared-with-deps
-      # This is a dummy value for libtorch to work correctly with our batch scripts
-      # without this value pip does not get installed for some reason
-      DESIRED_PYTHON: "3.8"
     steps:
       - name: Display EC2 information
         shell: bash

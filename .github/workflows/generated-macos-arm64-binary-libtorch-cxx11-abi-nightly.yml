@@ -24,6 +24,9 @@ env:
   ANACONDA_USER: pytorch
   AWS_DEFAULT_REGION: us-east-1
   BUILD_ENVIRONMENT: macos-arm64-binary-libtorch-cxx11-abi
+  # This is a dummy value for libtorch to work correctly with our batch scripts
+  # without this value pip does not get installed for some reason
+  DESIRED_PYTHON: '3.9'
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   PR_NUMBER: ${{ github.event.pull_request.number }}
   SKIP_ALL_TESTS: 1
@@ -47,9 +50,6 @@ jobs:
       SKIP_ALL_TESTS: 1
       LIBTORCH_VARIANT: shared-with-deps
       DESIRED_DEVTOOLSET: cxx11-abi
-      # This is a dummy value for libtorch to work correctly with our batch scripts
-      # without this value pip does not get installed for some reason
-      DESIRED_PYTHON: "3.8"
       # For sccache access (only on non-forked PRs)
       AWS_ACCESS_KEY_ID: ${{ secrets.MACOS_SCCACHE_S3_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.MACOS_SCCACHE_S3_SECRET_ACCESS_KEY }}
